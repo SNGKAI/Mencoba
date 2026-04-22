@@ -1,0 +1,286 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color:white;
+min-height:100vh;
+padding:30px 20px;
+}
+
+.title{
+text-align:center;
+font-size:2.5em;
+margin-bottom:30px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+letter-spacing:2px;
+}
+
+.game{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+max-width:1200px;
+margin:0 auto;
+}
+
+.mission{
+grid-column:span 2;
+background:rgba(255,255,255,0.1);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255,255,255,0.2);
+padding:25px;
+border-radius:15px;
+box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+}
+
+.mission h2{
+font-size:1.3em;
+margin-bottom:15px;
+color:#ffd700;
+}
+
+.mission p{
+font-size:1.1em;
+line-height:1.6;
+background:rgba(0,0,0,0.2);
+padding:15px;
+border-left:4px solid #ffd700;
+border-radius:5px;
+}
+
+.level-info{
+font-size:0.9em;
+color:#e0e0e0;
+margin-top:10px;
+}
+
+.editor-container{
+position:relative;
+background:rgba(255,255,255,0.1);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255,255,255,0.2);
+border-radius:15px;
+padding:15px;
+box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+}
+
+.editor-container h2{
+margin-bottom:10px;
+font-size:1.2em;
+}
+
+textarea{
+width:100%;
+height:250px;
+background:#1a1a2e;
+color:#0f0;
+border:2px solid #16213e;
+padding:15px;
+font-family:'Courier New', monospace;
+font-size:15px;
+border-radius:8px;
+resize:vertical;
+min-height:180px;
+}
+
+textarea:focus{
+outline:none;
+border-color:#00ff00;
+box-shadow: 0 0 10px rgba(0,255,0,0.3);
+}
+
+button{
+margin-top:15px;
+padding:12px 30px;
+background: linear-gradient(135deg, #4CAF50, #45a049);
+border:none;
+color:white;
+cursor:pointer;
+font-size:1em;
+font-weight:bold;
+border-radius:8px;
+transition: all 0.3s ease;
+width:100%;
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+button:hover{
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(76,175,80,0.4);
+}
+
+button:active{
+transform: translateY(0);
+}
+
+.preview-container{
+background:rgba(255,255,255,0.95);
+color:black;
+padding:15px;
+border-radius:15px;
+border: 1px solid rgba(255,255,255,0.2);
+box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+}
+
+.preview-container h2{
+font-size:1.2em;
+margin-bottom:10px;
+color:#667eea;
+}
+
+iframe{
+width:100%;
+height:250px;
+border:2px solid #ddd;
+border-radius:8px;
+background:white;
+}
+
+#hint{
+position:absolute;
+bottom:70px;
+left:15px;
+right:15px;
+background:#00ff00;
+color:#1a1a2e;
+padding:10px 15px;
+border-radius:8px;
+font-size:0.95em;
+font-weight:bold;
+animation: slideUp 0.3s ease;
+z-index:10;
+}
+
+@keyframes slideUp {
+from {
+opacity:0;
+transform:translateY(10px);
+}
+to {
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes success {
+0% {
+transform: scale(0.8);
+opacity: 0;
+}
+50% {
+transform: scale(1.1);
+}
+100% {
+transform: scale(1);
+opacity: 1;
+}
+}
+
+/* Popup Modal */
+.popup-modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.6);
+z-index: 1000;
+align-items: center;
+justify-content: center;
+backdrop-filter: blur(5px);
+animation: fadeIn 0.3s ease;
+}
+
+.popup-modal.show {
+display: flex;
+}
+
+.popup-content {
+background: white;
+padding: 40px 30px;
+border-radius: 15px;
+text-align: center;
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+max-width: 400px;
+width: 90%;
+animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.popup-icon {
+font-size: 3.5em;
+margin-bottom: 20px;
+height: 1em;
+}
+
+.popup-message {
+color: #333;
+font-size: 1.2em;
+font-weight: 500;
+line-height: 1.6;
+margin-bottom: 25px;
+}
+
+.popup-btn {
+background: linear-gradient(135deg, #667eea, #764ba2);
+color: white;
+border: none;
+padding: 12px 40px;
+font-size: 1em;
+font-weight: bold;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.popup-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+
+@keyframes popIn {
+from {
+transform: scale(0) rotate(-10deg);
+opacity: 0;
+}
+to {
+transform: scale(1) rotate(0);
+opacity: 1;
+}
+}
+
+@media (max-width:768px){
+.game{
+grid-template-columns:1fr;
+}
+
+.mission{
+grid-column:span 1;
+}
+
+.title{
+font-size:2em;
+}
+
+textarea,
+iframe{
+height:200px;
+}
+}
